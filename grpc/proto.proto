@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option go_package = "mandatory2/grpc";
+
+service DiceGame {
+    rpc Initiate (Commitment) returns (Value);
+    rpc Confirmation (Secrets) returns (Ack);
+}
+
+message Value{
+    int32 v = 1;
+}
+
+message Commitment{
+    bytes Commitment = 1;
+}
+
+message Secrets{
+    int32 v = 1;
+    int32 r = 2;
+}
+
+message Ack{
+    bool accepted = 1;
+}
